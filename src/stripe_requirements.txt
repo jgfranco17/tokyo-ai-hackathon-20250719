@@ -1,48 +1,11 @@
-1. Basic Payment Flow
-- Can users successfully make a payment with a valid card?
-- Does the payment show up in your Stripe Dashboard?
-- Is the success/failure message displayed correctly to users?
-
-2. Test Different Card Scenarios
-- Successful payment: 4242 4242 4242 4242
-- Card declined: 4000 0000 0000 0002
-- Insufficient funds: 4000 0000 0000 9995
-- 3D Secure required: 4000 0027 6000 3184
-- Payment requires authentication, then succeeds: 4000 0027 6000 3184
-- Incorrect CVC: 4000 0000 0000 0101
-- Expired card: 4000 0000 0000 0069
-- Processing error: 4000 0000 0000 0127
-
-3. Amount and Currency Handling
-- Correct amounts are charged
-- Currency formatting is correct (e.g., USD vs JPY vs EUR)
-- Taxes and discounts are applied accurately
-
-4. Webhook Handling (if used)
-- Payments are updated based on webhook events (e.g. payment_intent.succeeded)
-- Webhooks are secured and acknowledged with 2xx response
-- Test behavior when webhook delivery fails (e.g. retries, eventual consistency)
-
-5. Refunds and Cancellations
-- Can you successfully refund a payment?
-- Can you cancel a PaymentIntent before it's captured?
-
-6. Edge Cases
-- What happens when the network disconnects mid-payment?
-- What if Stripe API is unreachable or times out?
-- How does your app handle invalid API keys?
-
-7. Security Checks
-- Sensitive data (e.g. card number) never touches your backend
-- HTTPS is enforced on your frontend
-- Stripe keys (public/secret) are properly stored and scoped
-
-8. User Experience
-- Loading indicators during payment processing
-- Clear error messages for failed payments
-- Email confirmations (if set up)
-
-9. Subscription Flow (if applicable)
-- New subscriptions are created successfully
-- Proration, upgrades, and downgrades are handled
-- Trials and cancelations work as expected
+Stripe Payment Integration
+Implement and validate handling of Stripe payment flows including:
+Successful payment authorization with JPY as the currency
+Failed payment attempts and error codes from Stripe API
+3D Secure (3DS) authentication challenge and resolution flows
+Ensure error responses from Stripe are captured and surfaced in the UI with appropriate user feedback
+Verify successful transactions are logged and retrievable via Stripe Dashboard API or web interface
+Shopping Cart System
+Enable CRUD operations on cart items via front-end: add, remove, and update item quantities
+Implement real-time cart total calculation and UI updates on quantity or item changes without page reload
+Ensure cart state is synced with any back-end or API if applicable before proceeding to payment
